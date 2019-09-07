@@ -1,0 +1,278 @@
+<script>
+const abi = [
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "proposedUi",
+				"type": "string"
+			}
+		],
+		"name": "execute",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "join",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "proposedUi",
+				"type": "string"
+			}
+		],
+		"name": "propose",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "newUi",
+				"type": "string"
+			}
+		],
+		"name": "set",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "proposedUi",
+				"type": "string"
+			},
+			{
+				"internalType": "bool",
+				"name": "yay",
+				"type": "bool"
+			}
+		],
+		"name": "vote",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "holdings",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "maxHoldings",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"name": "nays",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"name": "proposals",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "ui",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"name": "voted",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "votingPeriodBlocks",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"name": "yays",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
+
+function isLocked() {
+   web3.eth.getAccounts(function(err, accounts){
+      if (err != null) {
+         console.log(err)
+      }
+      else if (accounts.length === 0) {
+         console.log('MetaMask is locked')
+      }
+      else {
+         console.log('MetaMask is unlocked')
+      }
+   });
+}
+isLocked()
+
+let Http = new XMLHttpRequest()
+const daoAddress = "0xDD0E544Bc37A58423CEE63E67d05e7d978DEE6c7"
+const infura = "https://ropsten.infura.io/v3/a8963bfa9c08437fbedd4df6ab172c9e"
+Http.open("POST", infura)
+Http.setRequestHeader("Content-Type", "application/json")
+
+const data = {"jsonrpc":"2.0", "method":"eth_call", "params": [{"to": daoAddress, "data": "0xa223e05d"}, "latest"], "id": 1}
+
+Http.send(JSON.stringify(data))
+Http.onreadystatechange = function() {
+  if(Http.readyState === 4 && Http.status === 200) {
+    const url = web3.toAscii(JSON.parse(Http.responseText).result)
+    uiHttp = new XMLHttpRequest()
+    uiHttp.open("GET", url)
+    uiHttp.send()
+    uiHttp.onreadystatechange = function() {
+      document.open()
+      document.write(uiHttp.responseText)
+      document.close()
+    }
+  }
+}
+/*
+
+
+}*/
+</script>
+
+
