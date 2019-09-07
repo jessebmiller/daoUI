@@ -53,19 +53,21 @@ contract NaiveStateDAO {
   // execute proposal
   function execute(string memory proposedUi) public {
     // voting period has passed
-    require(proposals[proposedUi] < block.number);
+    require(proposals[proposedUi] < block.number, "Voting period hasn't passed");
+
+    // vote passed
+    require(yays[proposedUi] > nays[proposedUi], "Did not pass");
+
     // reset yays and nays
     delete yays[proposedUi];
     delete nays[proposedUi];
-    // vote passed
-    require(yays[proposedUi] > nays[proposedUi]);
 
     ui = proposedUi;
   }
 
-  // mint
-  function mint(uint256 amount) public {
-    require(holdings[msg.sender] + amount <= maxHoldings);
-    holdings[msg.sender] = holdings[msg.sender] + amount;
+  // join
+  function join() public {
+    require(holdings[msg.sender] == 0);
+    holdings[msg.sender] = 1;
   }
 }
