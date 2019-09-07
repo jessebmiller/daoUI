@@ -17,7 +17,7 @@ contract("NaiveStateDAO", ([alice, bob, vick, ...acounts]) => {
     dao = await NaiveStateDAO.new()
   })
 
-  it("works motherfucker", async () => {
+  it("works", async () => {
     const proposal = "https://google.com"
     await dao.join()
     await dao.join({from: bob})
@@ -34,5 +34,9 @@ contract("NaiveStateDAO", ([alice, bob, vick, ...acounts]) => {
     await dao.execute(proposal)
 
     assert.equal(await dao.ui(), proposal)
+
+    await dao.set("reset")
+    assert.equal(await dao.ui(), "reset")
+
   })
 })

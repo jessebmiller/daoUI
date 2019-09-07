@@ -24,6 +24,11 @@ contract NaiveStateDAO {
     votingPeriodBlocks = 240; // about an hour
   }
 
+  function set(string memory newUi) public {
+    require(msg.sender == owner);
+    ui = newUi;
+  }
+
   // propose state change
   function propose(string memory proposedUi) public {
     // ui never proposed or voting period has passed
