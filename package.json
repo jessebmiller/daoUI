@@ -1,0 +1,25 @@
+{
+  "name": "daoui",
+  "version": "1.0.0",
+  "description": "A DAO that manages it's UI development",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jessebmiller/daoUI.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jessebmiller/daoUI/issues"
+  },
+  "homepage": "https://github.com/jessebmiller/daoUI#readme",
+  "dependencies": {
+    "openzeppelin-solidity": "^2.3.0"
+  }
+}
