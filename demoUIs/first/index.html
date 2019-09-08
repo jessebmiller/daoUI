@@ -1,21 +1,74 @@
-<h1>Naive State DAO</h1>
-<h2>Example of a DAO managing state</h2>
-<p>
-  This is the first UI for this DAO, it's pretty basic and could probably
-  use some improvement.
-</p>
-<p>
-  Members of the dao at 0xDD0E544Bc37A58423CEE63E67d05e7d978DEE6c7 can
-  can propose and vote on new UIs to replace this one.
-</p>
-<p>
-  The DAO is pretty naive so we could build it at the hackathon. Anyone
-  can join, propose new UIs, and vote on them. It's a simple majority vote
-  and a 240 block voting perios (about an hour).
-</p>
-<p>
-  Ezra or Jesse (who are probably showing you this) could show you how to
-  interact with the contract, that's naive right now too, it's probably
-  just with the Remix IDE. Maybe you or someone will propose a UI that
-  will have a slick UI for proposing the next UI.
-</p>
+<body style="display: flex; flex-direction: column; align-items: center;">
+  <h1>Naive State DAO</h1>
+  <h2>Example of a DAO managing state</h2>
+  <p>
+    This is the first UI for this DAO. It could probably
+    use some improvement!
+  </p>
+  <p>
+    Members of the dao at 0x7F2F9D06B9CccBf685e4a84449f67604474D20d4
+    can propose and vote on new UIs to replace this one.
+  </p>
+  <h1>How to Propose a New UI</h1>
+  <ol>
+    <li>Go to <a href="https://remix.ethereum.org">remix</a>.</li>
+    <li>Connect to the Ropsten testnet using Metamask (or some other web3 provider).</li>
+    <li>
+      Load the DAO contract at 
+      "https://github.com/jessebmiller/daoUI/blob/master/contracts/NaiveStateDAO.sol".
+    </li>
+    <p>
+      <img style="height:400px;" src="https://raw.githubusercontent.com/jessebmiller/daoUI/master/Screen%20Shot%202019-09-07%20at%208.31.44%20PM.png"> 
+    </p>
+    <li>Select the DAO contract.</li>
+    <p>
+      <img style="height:400px;" src="https://raw.githubusercontent.com/jessebmiller/daoUI/master/Screen%20Shot%202019-09-07%20at%208.35.08%20PM.png"> 
+    </p>
+    <li>Enter the Solidity environment.</li>
+    <p>
+      <img style="height:400px;" src="https://raw.githubusercontent.com/jessebmiller/daoUI/master/Screen%20Shot%202019-09-07%20at%208.35.24%20PM.png"> 
+    </p>
+    <li>Compile the contract.</li>
+    <p>
+      <img style="height:400px;" src="https://raw.githubusercontent.com/jessebmiller/daoUI/master/Screen%20Shot%202019-09-07%20at%208.35.47%20PM.png"> 
+    </p>
+    <li>Go to the "Deploy & Run Transactions" tab.</li>
+    <p>
+      <img style="height:400px;" src="https://raw.githubusercontent.com/jessebmiller/daoUI/master/Screen%20Shot%202019-09-07%20at%208.38.18%20PM.png"> 
+    </p>
+    <li>Change the "Environment" dropdown to "Injected Web3."</li>
+    <li>
+      Paste in the address, 
+      "0x7F2F9D06B9CccBf685e4a84449f67604474D20d4", 
+      and click "At Address."
+    </li>
+    <li>Open the deployed contract.</li>
+    <p>
+      <img style="height:400px;" src="https://raw.githubusercontent.com/jessebmiller/daoUI/master/Screen%20Shot%202019-09-07%20at%208.38.30%20PM.png"> 
+    </p>
+    <li>
+      Enter the URL where the UI you want to propose is hosted, 
+      and click propose, then confirm the transaction in Metamask.
+      (We suggest making a <a href="https://help.github.com/en/articles/creating-gists">github gist</a>.)
+    </li>
+    <p>
+      <img style="height:400px;" src="https://raw.githubusercontent.com/jessebmiller/daoUI/master/Screen%20Shot%202019-09-07%20at%208.39.40%20PM.png"> 
+    </p>
+    <li>
+      To confirm that your proposal was submitted, 
+      enter the URL you submitted into "proposals" and click the button.</li>
+    <li>Now, go tell peope to vote for your proposal!</li>
+  </ol>
+  <h1>How to Vote for Proposals</h1>
+  <ol>
+    <li>Follow the "How to Propose..." directions until you've finished step 10.</li>
+    <li>Click "Join" to gain voting power in the DAO.</li>
+    <li>
+      Into the "vote" form, write <strong>"PROPOSED URL", true</strong> to vote yes, 
+      or <strong>"PROPOSED URL", false</strong> to vote no.
+    </li>
+    <p>
+      <img style="height:400px;" src="https://raw.githubusercontent.com/jessebmiller/daoUI/master/Screen%20Shot%202019-09-07%20at%209.17.47%20PM.png"> 
+    </p>
+  </ol>
+</body>
