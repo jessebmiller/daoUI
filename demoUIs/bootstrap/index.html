@@ -1,3 +1,9 @@
+<!-- script src="https://app.tor.us/v0.0.23/embed.min.js"
+        integrity="sha384-rH43pxyiFOwHf69VO2yvr7CZqGZ+X5q8zsMPoSzBDBUm1gH/kuF6EY3VTC6i2ORd"
+        crossorigin="anonymous">
+</script-->
+
+
 <script>
 
 function isLocked() {
@@ -17,18 +23,37 @@ isLocked()
 
 let Http = new XMLHttpRequest()
 const daoAddress = "0xDD0E544Bc37A58423CEE63E67d05e7d978DEE6c7"
-const infura = "https://ropsten.infura.io/v3/a8963bfa9c08437fbedd4df6ab172c9e"
+const infura = "https://rinkeby.infura.io/v3/a8963bfa9c08437fbedd4df6ab172c9e"
 Http.open("POST", infura)
 Http.setRequestHeader("Content-Type", "application/json")
 
 const data = {"jsonrpc":"2.0", "method":"eth_call", "params": [{"to": daoAddress, "data": "0xa223e05d"}, "latest"], "id": 1}
 
+function toAscii(hex) {
+let value = '';
+    console.log(hex)
+    let i = 0;
+    const l = hex.length;
+
+    if (hex.substring(0, 2) === '0x') {
+        i = 2;
+    }
+    for (; i < l; i += 2) {
+        const code = parseInt(hex.substr(i, 2), 16);
+               value += String.fromCharCode(code);
+               console.log(i, hex.substr(i, 2), code, value)
+    }
+
+    return value;
+};
+
 Http.send(JSON.stringify(data))
 Http.onreadystatechange = function() {
   if(Http.readyState === 4 && Http.status === 200) {
-    const url = web3.toAscii(JSON.parse(Http.responseText).result)
+    const url = toAscii(JSON.parse(Http.responseText).result)
+console.log(url, JSON.parse(Http.responseText))
     uiHttp = new XMLHttpRequest()
-    uiHttp.open("GET", url)
+    uiHttp.open("GET", "http" + url.split("http")[1])
     uiHttp.send()
     uiHttp.onreadystatechange = function() {
       document.open()
