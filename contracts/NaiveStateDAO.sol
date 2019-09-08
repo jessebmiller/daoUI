@@ -21,7 +21,7 @@ contract NaiveStateDAO {
   constructor() public {
     maxHoldings = 100;
     owner = msg.sender;
-    votingPeriodBlocks = 240; // about an hour
+    votingPeriodBlocks = 80; // about 20 minutes
   }
 
   function set(string memory newUi) public {

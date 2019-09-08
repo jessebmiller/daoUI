@@ -22,8 +22,8 @@ function isLocked() {
 isLocked()
 
 let Http = new XMLHttpRequest()
-const daoAddress = "0xDD0E544Bc37A58423CEE63E67d05e7d978DEE6c7"
-const infura = "https://rinkeby.infura.io/v3/a8963bfa9c08437fbedd4df6ab172c9e"
+const daoAddress = "0x7F2F9D06B9CccBf685e4a84449f67604474D20d4"
+const infura = "https://ropsten.infura.io/v3/a8963bfa9c08437fbedd4df6ab172c9e"
 Http.open("POST", infura)
 Http.setRequestHeader("Content-Type", "application/json")
 
@@ -53,7 +53,8 @@ Http.onreadystatechange = function() {
     const url = toAscii(JSON.parse(Http.responseText).result)
 console.log(url, JSON.parse(Http.responseText))
     uiHttp = new XMLHttpRequest()
-    uiHttp.open("GET", "http" + url.split("http")[1])
+    const s = url.split("http")
+    uiHttp.open("GET", "http" + s[s.length - 1])
     uiHttp.send()
     uiHttp.onreadystatechange = function() {
       document.open()
